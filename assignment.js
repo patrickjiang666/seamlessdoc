@@ -21,8 +21,17 @@ const bowling = (str)=>{
 		      queue.pop(0);
 		    }
 		    else if(queue[0] == 'strike'){
-
+		    	score += parseInt(first) + parseInt(second) + 10;
+      		queue.pop(0);
 		    }
+		    /*---repeat situation from queue.length==0*/
+		    if(second!='/'){
+					score += parseInt(first) + parseInt(second);
+				}
+				else{
+					queue.push('spare');
+				}
+				/*----------------------------------------*/
 	    }
 		}
 		console.log(score,queue);

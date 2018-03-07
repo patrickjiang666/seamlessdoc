@@ -38,28 +38,12 @@ const bowling = (str)=>{
 			if(queue.length==0){
         queue.push('strike'); 
       }
-      else if(queue.length==1){
-      	/*---------------------------*/
-        if(queue.length==1){
-		      if(queue[0]=='spare'){
-		        score += 20;
-		        queue.pop(0);
-		      }
-		      queue.push('strike');
-		    }
-		    /*---------------------------*/
+      else if(queue.length==1){ // ... 81 5/ X 
+      	oneAhead();
       }
       else if(queue.length==2){
         calc2Prev(ele);
-        /*---------------------------*/
-        if(queue.length==1){
-		      if(queue[0]=='spare'){
-		        score += 20;
-		        queue.pop(0);
-		      }
-		      queue.push('strike');
-		    }
-		    /*---------------------------*/
+        oneAhead();
       }
 		}
 		else if(ele.length == 2){

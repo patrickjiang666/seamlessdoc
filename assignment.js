@@ -4,17 +4,28 @@ const bowling = (str)=>{
 	let score = 0;
 	let queue = [];
 	frames.map((ele, index)=>{
-		console.log(ele,index);
 		if(ele.length == 2){
 			let first = ele.charAt(0);
     	let second = ele.charAt(1);
-    	if(second!='/'){
-				score += parseInt(first) + parseInt(second);
-			}
-			else{
-				queue.push('spare');
-			}
+    	if(queue.length==0){
+        if(second!='/'){
+					score += parseInt(first) + parseInt(second);
+				}
+				else{
+					queue.push('spare');
+				}
+      }
+	    else if(queue.length==1){
+	    	if(queue[0]=='spare'){
+		      score += parseInt(first) + 10;
+		      queue.pop(0);
+		    }
+		    else if(queue[0] == 'strike'){
+
+		    }
+	    }
 		}
+		console.log(score,queue);
 	});
 }
 bowling('9- 9- 9- 9- 9- 9- 9- 9- 9- 9-');

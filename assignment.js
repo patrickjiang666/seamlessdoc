@@ -102,4 +102,6 @@ const bowling = (str)=>{
 console.log(bowling('9- 9- 9- 9- 9- 9- 9- 9- 9- 9-'));
 console.log(bowling('5/ 5/ 26 X 81 5/ X 71 7/ 7/X'));
 console.log(bowling('5/ 5/ 26 X 81 5/ 72 X X 3/8'));
+console.log(bowling('81 5/ 72 X X 3/8'));
+console.log(bowling('5/ 5/ 26 X'));
 console.log(bowling('X X X X X X X X X X X X'));

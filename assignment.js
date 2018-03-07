@@ -3,61 +3,49 @@ const bowling = (str)=>{
 	console.log(frames);
 	let score = 0;
 	let queue = [];
+/*---------------------------*/
+  const twoAhead = (ele) =>{
+    let first = ele.charAt(0);
+    let second = ele.charAt(1);
+    if(second!='/'){
+      score += parseInt(first) + parseInt(second);
+    }
+    else{
+      queue.push('spare');
+    }
+  }
+  const calcPrev = (ele)=>{
+    let first = ele.charAt(0);
+    let second = ele.charAt(1);
+    if(queue[0]=='spare'){
+      score += parseInt(first) + 10;
+      queue.pop(0);
+    }
+    else if(queue[0] == 'strike'){
+      score += parseInt(first) + parseInt(second) + 10;
+      queue.pop(0);
+    }
+  }
+  const calc2Prev = (ele)=>{
+    let first = ele.charAt(0);
+    let second = ele.charAt(1);
+    first=='X'?score += 30:score += parseInt(first) + 20
+    queue.pop(0);
+  }
+/*---------------------------*/
 	frames.map((ele, index)=>{
 		if(ele.length == 2){
-			let first = ele.charAt(0);
-    	let second = ele.charAt(1);
     	if(queue.length==0){
-    		/*----------------------------------------*/
-        if(second!='/'){
-					score += parseInt(first) + parseInt(second);
-				}
-				else{
-					queue.push('spare');
-				}
-				/*----------------------------------------*/
+    		twoAhead(ele);
       }
 	    else if(queue.length==1){
-	    	/*=========================================*/
-	    	if(queue[0]=='spare'){
-		      score += parseInt(first) + 10;
-		      queue.pop(0);
-		    }
-		    else if(queue[0] == 'strike'){
-		    	score += parseInt(first) + parseInt(second) + 10;
-      		queue.pop(0);
-		    }
-		    /*---repeat situation from queue.length==0*/
-		    if(second!='/'){
-					score += parseInt(first) + parseInt(second);
-				}
-				else{
-					queue.push('spare');
-				}
-				/*----------------------------------------*/
-				/*=========================================*/
+	    	calcPrev(ele);
+        twoAhead(ele);
 	    }
-	    else if(queue.length==2){ // ... 81 5/ X ...
-	    	first=='X'?score += 30:score += parseInt(first) + 20
-    		queue.pop(0);
-    		/*==repeat situation from queue.length==1==*/
-    		if(queue[0]=='spare'){
-		      score += parseInt(first) + 10;
-		      queue.pop(0);
-		    }
-		    else if(queue[0] == 'strike'){
-		    	score += parseInt(first) + parseInt(second) + 10;
-      		queue.pop(0);
-		    }
-		    /*---repeat situation from queue.length==0*/
-		    if(second!='/'){
-					score += parseInt(first) + parseInt(second);
-				}
-				else{
-					queue.push('spare');
-				}
-				/*----------------------------------------*/
-				/*=========================================*/
+	    else if(queue.length==2){ // ... 81 5/ X 
+	    	calc2Prev(ele);
+        calcPrev(ele);
+        twoAhead(ele);
 	    }
 		}
 		console.log(score,queue);

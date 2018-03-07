@@ -81,7 +81,10 @@ const bowling = (str)=>{
         }
       }
       else if(queue.length==1){
-      	
+      	if(queue[0]=='spare'){
+          score += parseInt(first) + 20;
+          third=='X'?score += 10:score += parseInt(third);
+        }
       }
       else if(queue.length==2){
         score += parseInt(first) + 40;

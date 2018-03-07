@@ -34,7 +34,35 @@ const bowling = (str)=>{
   }
 /*---------------------------*/
 	frames.map((ele, index)=>{
-		if(ele.length == 2){
+		if(ele=='X'){
+			if(queue.length==0){
+        queue.push('strike'); 
+      }
+      else if(queue.length==1){
+      	/*---------------------------*/
+        if(queue.length==1){
+		      if(queue[0]=='spare'){
+		        score += 20;
+		        queue.pop(0);
+		      }
+		      queue.push('strike');
+		    }
+		    /*---------------------------*/
+      }
+      else if(queue.length==2){
+        calc2Prev(ele);
+        /*---------------------------*/
+        if(queue.length==1){
+		      if(queue[0]=='spare'){
+		        score += 20;
+		        queue.pop(0);
+		      }
+		      queue.push('strike');
+		    }
+		    /*---------------------------*/
+      }
+		}
+		else if(ele.length == 2){
     	if(queue.length==0){
     		twoAhead(ele);
       }

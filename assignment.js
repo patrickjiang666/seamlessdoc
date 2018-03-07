@@ -73,13 +73,19 @@ const bowling = (str)=>{
       let second = ele.charAt(1);
       let third = ele.charAt(2);
       if(queue.length==0){
-
+      	if(second!='/' && third!=='/'){
+          score += (parseInt(second) + parseInt(third))*2 + 10;
+        }
+        else{
+          third=='X'?score += 30:score += (10+parseInt(third));
+        }
       }
       else if(queue.length==1){
       	
       }
       else if(queue.length==2){
-      	
+        score += parseInt(first) + 40;
+        third=='X'?score += 20:score += (10+parseInt(third));
       }
 		}
 		console.log(score,queue);
@@ -87,3 +93,4 @@ const bowling = (str)=>{
 }
 // bowling('9- 9- 9- 9- 9- 9- 9- 9- 9- 9-');
 bowling('5/ 5/ 26 X 81 5/ X 71 7/ 7/X');
+bowling('5/ 5/ 26 X 81 5/ 72 X X 3/8');

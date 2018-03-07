@@ -85,6 +85,10 @@ const bowling = (str)=>{
           score += parseInt(first) + 20;
           third=='X'?score += 10:score += parseInt(third);
         }
+        else{
+          score += parseInt(first) + 30;
+          third=='X'?score += 20:score += (10+parseInt(third)*3);
+        }
       }
       else if(queue.length==2){
         score += parseInt(first) + 40;
@@ -97,3 +101,4 @@ const bowling = (str)=>{
 // bowling('9- 9- 9- 9- 9- 9- 9- 9- 9- 9-');
 bowling('5/ 5/ 26 X 81 5/ X 71 7/ 7/X');
 bowling('5/ 5/ 26 X 81 5/ 72 X X 3/8');
+bowling('X X X X X X X X X X X X');

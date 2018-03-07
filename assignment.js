@@ -4,6 +4,15 @@ const bowling = (str)=>{
 	let score = 0;
 	let queue = [];
 /*---------------------------*/
+  const oneAhead = () =>{
+    if(queue.length==1){
+      if(queue[0]=='spare'){
+        score += 20;
+        queue.pop(0);
+      }
+      queue.push('strike');
+    }
+  }
   const twoAhead = (ele) =>{
     let first = ele.charAt(0);
     let second = ele.charAt(1);

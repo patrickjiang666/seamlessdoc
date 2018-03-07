@@ -1,6 +1,5 @@
 const bowling = (str)=>{
 	let frames = str.replace(/-/g, '0').split(' ');
-	console.log(frames);
 	let score = 0;
 	let queue = [];
 /*---------------------------*/
@@ -69,8 +68,22 @@ const bowling = (str)=>{
         twoAhead(ele);
 	    }
 		}
+		if(ele.length == 3 && index==frames.length-1){
+			let first = ele.charAt(0);
+      let second = ele.charAt(1);
+      let third = ele.charAt(2);
+      if(queue.length==0){
+
+      }
+      else if(queue.length==1){
+      	
+      }
+      else if(queue.length==2){
+      	
+      }
+		}
 		console.log(score,queue);
 	});
 }
-bowling('9- 9- 9- 9- 9- 9- 9- 9- 9- 9-');
+// bowling('9- 9- 9- 9- 9- 9- 9- 9- 9- 9-');
 bowling('5/ 5/ 26 X 81 5/ X 71 7/ 7/X');
